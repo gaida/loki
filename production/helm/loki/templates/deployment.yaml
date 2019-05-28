@@ -87,6 +87,10 @@ spec:
       {{- if .Values.persistence.enabled }}
           persistentVolumeClaim:
             claimName: {{ .Values.persistence.existingClaim | default (include "loki.fullname" .) }}
+      {{- else if .Values.awsElasticBlockStore.enabled }}
+          awsElasticBlockStore:
+            volumeID: {{ .Values.awsElasticBlockStore.volumeID }}
+            fsType: {{ .Values.awsElasticBlockStore.fsType }}
       {{- else }}
           emptyDir: {}
       {{- end }}

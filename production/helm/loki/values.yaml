@@ -99,6 +99,16 @@ persistence:
   # subPath: ""
   # existingClaim:
 
+## ref: https://kubernetes.io/docs/concepts/storage/volumes/#awselasticblockstore
+## Note: this can only be enabled if "persistence.enabled" is set to "false"
+## If you set enabled as "true", you need to :
+## - specify an existing Amazon AWS EBS volume with "volumeID"
+## - specify the file system of that volume with "fsType" (f.e. ext4)
+awsElasticBlockStore:
+  enabled: false
+  # volumeID: ""
+  # fsType: ""
+
 ## Pod Labels
 podLabels: {}
 
